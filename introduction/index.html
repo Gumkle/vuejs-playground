@@ -37,9 +37,23 @@
             <button v-on:click="reverseMessage">Reverse Message</button>
         </div>
 
-        
+        <!-- Demonstracja bindowania elementu do inputa użytkownika -->
+        <div id="app6">
+            <p>{{message}}</p>
+            <input v-model="message">
+        </div>
 
-        <script src="node_modules/vue/dist/vue.js"></script>
+        <div id="app7">
+            <ol>
+                <todo-item
+                v-for="item in groceryList"
+                v-bind:todo="item"
+                v-bind:key="item.id"
+                ></todo-item>
+            </ol>
+        </div>
+
+        <script src="../node_modules/vue/dist/vue.js"></script>
         <script src="script.js"></script>
     </body>
 </html>
