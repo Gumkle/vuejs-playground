@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Tytuł</title>
+        <link rel="stylesheet" href="style.css">
+        
+    </head>
+    <body>
+        
+        <!-- Demonstracja bindowwania danych do elementu -->
+        <div id="app">
+            {{ message }}
+        </div>
+
+        <!-- Demontracja bindowania właściwości do elementu -->
+        <div id="app2">
+            <span v-bind:class="message">
+                Hover over!
+            </span>
+        </div>
+
+        <!-- Demontracja instrukcji warunkowej -->
+        <div id="app3">
+            <span v-if="seen">Now you see me</span>
+        </div>
+
+        <!-- Demonstracja pętli for -->
+        <div id="app4">
+            <ol>
+                <li v-for="todo in todos">{{ todo.text }}</li>
+            </ol>
+        </div>
+
+        <!-- Demontstracja nasłuchiwania eventów -->
+        <div id="app5">
+            <p>{{message}}</p>
+            <button v-on:click="reverseMessage">Reverse Message</button>
+        </div>
+
+        
+
+        <script src="node_modules/vue/dist/vue.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
