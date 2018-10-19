@@ -1,0 +1,29 @@
+<html xmlns:v-on="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8">
+        <title>Tytuł</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <div id="app">
+            <h1>
+                <!--Apki vue mogą zawierać w sobie pojedyncze wyrażenia, ale deklaracje już niekoniecznie-->
+                {{ b*a }}
+
+                <!--Nie powinno się też odwoływać w HTMLU do zmiennych globalnych-->
+            </h1>
+            <input type="number" v-model="a">
+
+            <!--Dyrektywy również mogą przyjmować tylko pojedyncze wyrażenia JS-->
+            <p v-if="seen">leeeel</p>
+
+            <!--Do bindów i onów są skróty-->
+            <button @click="buttonClicked">Kliknij mnie</button>
+            <p :class="bindedClass">Kolorowy tekst</p>
+        </div>
+
+        <script src="../node_modules/vue/dist/vue.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
