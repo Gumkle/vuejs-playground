@@ -1,4 +1,4 @@
-<html xmlns:v-on="http://www.w3.org/1999/xhtml">
+<html xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="utf-8">
         <title>Tytuł</title>
@@ -6,39 +6,22 @@
     </head>
     <body>
 
-        <div id="app">
-            <!--Zamiast złożonych wyrażeń w widokach warto sobie zatrzymywać te operacje w computed elementu-->
+        <div id="app1">
+            <!--Class i bind class mogą współistnieć-->
+            <!--Bind class może zawierać w sobie metody skrótowcowe, które przypiszą klasę w zależności od wartości określonej zmiennej-->
+            <div class="container" v-bind:class="{'active': isActive, 'color-danger': hasErrors}"></div>
 
-            <p>Original message: {{ message }}</p>
-            <p>Computed reversed message: {{ reversedMessage }}</p>
+            <!--Możemy przypisywać również obiekty, które zawierają właściwości-->
+            <div class="container" v-bind:class="classObject"></div>
+
+            <!--Możemy przypisywać również tablicę klas-->
+            <!--Tablica może zawierać również wyrażenia, w tym operatory trójargumentowe no i obiekty-->
+            <!--Jeżeli zapisałeś style inline albo w obiekcie, to Vue automatycznie dodaje vendor prefixy - wymagane przez określone przeglądarki w określonych stylach-->
+            <div class="container" :class="[errorClass, activeClass]"></div>
+
+
         </div>
 
-
-        <div id="app2">
-            <!--Computed properties zmieniają się za każdym razem, kiedy zmienia się jedna z właściwości, którą wykorzystuje-->
-            <!--Kod jest znacznie czystszy niż w angularowym watch-->
-            <!--Computed property będzie się zmieniał TYLKO w przypadku zmiany składowych, tj. nie będzie się zmieniał w przypadku zmiany wartości Date.now()-->
-            {{ fullName }}
-        </div>
-
-        <div id="app3">
-            <!--Jest możliwość wywołania funkcji i umieszczenia jej wartości zwracanej w miejscu jej wywołania-->
-            <!--Funkcja zmienia się za każdym razem, kiedy zmiana wpływa na jej wartość, więc w przeciwieństwie do computed property zmieni się w przypadku zmiany wartości Date.now()-->
-            {{ sum() }}
-        </div>
-
-        <div id="app4">
-            <!--Vue również implementuje funkcje watch, która to służy do skomplikowanych i kosztownych procesów związanych ze zmieniającymi się danymi-->
-            <p>
-                Ask a yes/no question:
-                <input v-model="question">
-            </p>
-            <p>{{ answer }}</p>
-        </div>
-
-        <!--Vue jest małe dzięki temu, że nie implementuje domyślnie bibliotek AJAXowych i innych takich. Jeżeli chcesz używać tego, z czym jesteś zaznajomiony, to Vue nie widzi z tym żadnego problemu-->
-        <script src="../node_modules/axios/dist/axios.min.js"></script>
-        <script src="../node_modules/lodash/lodash.min.js"></script>
         <script src="../node_modules/vue/dist/vue.js"></script>
         <script src="script.js"></script>
     </body>

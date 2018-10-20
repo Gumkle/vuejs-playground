@@ -1,0 +1,62 @@
+<html xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8">
+        <title>Tytuł</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <div id="app">
+
+            <!--w Vue możemy używać if else-->
+            <p v-if="ok">Yes</p>
+            <p v-else-if="Math.random() > 0.5">Maybee...</p>
+            <p v-else>No</p>
+
+            <!--Używam templat do objęcia warunkiem kilku elementów. Templaty nie mają żadnego wpływu na strukturę-->
+            <!--Vue oszczędza moc obliczeniową przez nierenderowanie tych samych elementów od nowa, ale bardziej przez wykorzystywanie tych samych elementów i ich drobną edycję-->
+            <!--W poniższym przykładzie przy zmianie wartości loginType treść, którą wpisaliśmy do inputa nie zniknie, bo input jest ten sam. Tylko placeholder się zmienia-->
+            <template v-if="loginType === 'username'">
+                <label>Username</label>
+                <input placeholder="Enter your username">
+            </template>
+            <template v-else>
+                <label>Email</label>
+                <input placeholder="Enter your email">
+            </template>
+            <br>
+
+            <!--Żeby uniknąć powyższego efektu, elementy trzeba opatrzyć indywidualnym kluczem, aby Vue traktowało je jako dwa różne elementy-->
+            <template v-if="loginType === 'username'">
+                <label>Username</label>
+                <input placeholder="Enter your username" key="username-input">
+            </template>
+            <template v-else>
+                <label>Email</label>
+                <input placeholder="Enter your email" key="email-input">
+            </template>
+            <br>
+
+            <!--Podobny do ifa jest show, ale show nie usuwa elementu z DOM - jedynie zmienia jego display-->
+            <!--Show nie obsługuje templaty ani nie obsługuje else-->
+            <div v-show="loginType === 'username'">
+                <label>Username</label>
+                <input placeholder="Enter your username">
+                <br>
+            </div>
+            <div v-show="loginType != 'username'">
+                <label>Email</label>
+                <input placeholder="Enter your email">
+            </div>
+            <button @click="toggleLoginType">Toggle login type</button>
+
+            <!--if nie renderuje nic, póki nie zostanie spełniony warunek-->
+            <!--show renderuje i ukrywa element, jeżeli nie zostanie spełniony warunek-->
+            <!--if jest kosztowne na togglu, show na inicie. Uzywaj ifa do rzadko zmieniających się rzeczy i showa do tych często się zmieniających-->
+            <!--if ma niższy priorytet niż for, nie zaleca się używania ich razem-->
+        </div>
+
+        <script src="../node_modules/vue/dist/vue.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>

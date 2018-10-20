@@ -1,0 +1,16 @@
+.container {
+    border: 3px solid black;
+    width: 100px;
+    height: 100px;
+    margin: 15px;
+}
+
+.container.active {
+     -webkit-box-shadow: 7px 7px 10px 5px rgba(0, 0, 0, 0.5);
+     -moz-box-shadow: 7px 7px 10px 5px rgba(0, 0, 0, 0.5);
+     box-shadow: 7px 7px 10px 5px rgba(0, 0, 0, 0.5);
+}
+
+.container.color-danger{
+    background-color: red;
+}
