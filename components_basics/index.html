@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Tytuł</title>
+        <link rel="stylesheet" href="style.css">
+        
+    </head>
+    <body>
+
+        <!--Zdefiniowane komponenty można używać tylko i wyłącznie w rootach aplikacji Vue-->
+        <div id="app">
+            <!--Każdy komponent posiada pełną niezależność od pozostałych-->
+            <button-counter></button-counter>
+            <button-counter></button-counter>
+            <button-counter></button-counter>
+
+            <!--Przekazywanie właściwości do komponentów z propsami-->
+            <!--Jeżeli tych wartości jest za dużo, to zawsze można zapakować je w obiekt-->
+            <!--Komponenty mogą triggerować custom eventy, które potem można przechwytywać i obsługiwać. Możemy też pozyskiwać ich wartość ($event)-->
+            <!--Poniższy przykład z jakiegoś powodu nie działa lol nie wiem czemu XD-->
+            <blog-post v-for="post in posts" :key="post.id" :post="post" @enlarge-text="postFontSize += $event" :postFontSize="postFontSize"></blog-post>
+
+        </div>
+        <script src="../node_modules/vue/dist/vue.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
